@@ -1,7 +1,7 @@
 .uicontainer{
   display: flex;
   justify-content: center;
-  
+  height: 100vh;
 }
 
 .landingpage{
@@ -20,6 +20,12 @@
   width: 25vw;
   padding: 1rem;
   border: 1px solid black;
+}
+
+.modulebriefcontainer{
+  width: 25vw;
+  padding: 1rem;
+  border: 1px solid black; 
 }
 .cancelbtn{
   display: flex;
@@ -149,7 +155,34 @@
   padding: 1.5rem;
 }
 
+.briefshapes{
+  display: flex;
+  align-items: center;
+  gap:3rem;
 
+}
+
+.modulebriefshapes{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.leftbutton{
+background: rgba(0, 0, 0, 0.42);
+border-radius: 30px 0px 0px 30px;
+color: white;
+border: none;
+padding: 0.5rem 1rem;
+}
+
+.rightbutton{
+background: #007E0D;
+border-radius: 0px 30px 30px 0px;
+color: white;
+border: none;
+padding: 0.5rem 1rem;
+}
 .paragraphs{
   font-size: 1rem;
   display: flex;
