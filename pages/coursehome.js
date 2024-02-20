@@ -1,10 +1,26 @@
-import React from 'react'
+import React from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import CircularProgressBar from '@/components/CircularProgress';
 import { FaPlayCircle } from "react-icons/fa";
 import { MdDoneOutline } from "react-icons/md";
+import Image from 'next/image';
+import Link from 'next/link';
+
 const coursehome = () => {
     const completionPercentage = 60;
+    const [modules, setModules] = useState([]);
+
+    useEffect(() => {
+        async function fetchModules() {          
+          const res = await fetch('/api/module');
+          const data = await res.json();
+          setModules(data);
+        }
+    
+        fetchModules();
+      }); 
+
   return (
     <div className={styles.uicontainer}>
         <div className={styles.coursehomepage}>
@@ -14,74 +30,37 @@ const coursehome = () => {
         <div className={styles.progress}>
             <div className={styles.progressdetails}>
             <div className={styles.individualprogressdetails}>
-                <div className={styles.smallcircle}></div>
+                <div className={styles.smallcircle}>
+                    <Image src='/briefcircle.jpeg' height={20} width={20} alt='circle'/>
+                </div>
                 8 more to collect
             </div>
             <div className={styles.individualprogressdetails}>
-                <div className={styles.smallsquare}></div>
+                <div className={styles.smallsquare}>
+                <Image src='/briefsquare.jpeg' height={20} width={20} alt='square'/>
+                </div>
                 8 more to collect
             </div>
             <div className={styles.individualprogressdetails}>
-                <div className={styles.smallvector}></div>
+                <div className={styles.smallvector}>
+                <Image src='/brieftool.jpeg' height={20} width={20} alt='tool'/>
+                </div>
                 2 more to collect
             </div>
             </div>
             <CircularProgressBar percentage={completionPercentage}/>
         </div>
         <div className={styles.secondcoursehome}>
-            <div>
-                <div className={styles.courseitem}>
-                <MdDoneOutline/>
-                <div>
-                    <h3>Function of Money</h3>
-                    <p>Money as a Medium of Exchange and Store of Value, Salability of Money, Hard Money</p>
-                    </div>
-                    <div className={styles.smallobject}>
-                        <div className={styles.smallcircle}></div>
-                        <div className={styles.smallsquare}></div>
-                        <div className={styles.smallvector}></div>
-                    </div>
-                </div>
-                <div className={styles.courseitem}>
-                <FaPlayCircle />
-                <div>
-                    <h3>Function of Money</h3>
-                    <p>Money as a Medium of Exchange and Store of Value, Salability of Money, Hard Money</p>
-                    </div>
-                    <div className={styles.smallobject}>
-                        <div className={styles.smallcircle}></div>
-                        <div className={styles.smallsquare}></div>
-                        <div className={styles.smallvector}></div>
-                    </div>
-                </div>
-                <div className={styles.courseitem}>
-                <FaPlayCircle />
-                <div>
-                    <h3>Function of Money</h3>
-                    <p>Money as a Medium of Exchange and Store of Value, Salability of Money, Hard Money</p>
-                    </div>
-                    <div className={styles.smallobject}>
-                        <div className={styles.smallcircle}></div>
-                        <div className={styles.smallsquare}></div>
-                        <div className={styles.smallvector}></div>
-                    </div>
-                </div>
-                <div className={styles.courseitem}>
-                <FaPlayCircle  style={{height:'25px' , width:'2px'}}/>
-                <div>
-                    <h3>Function of Money</h3>
-                    <p>Money as a Medium of Exchange and Store of Value, Salability of Money, Hard Money</p>
-                    </div>
-                    <div className={styles.smallobject}>
-                        <div className={styles.smallcircle}></div>
-                        <div className={styles.smallsquare}></div>
-                        <div className={styles.smallvector}></div>
-                    </div>
-                </div>
+        {modules.map((module, index) => (
+        <div key={index} className={styles.courseitem}>
+           <Link href='/modulebrief'>
+          <p>{module.module_name}</p>
+          </Link> 
+        </div>
+      ))}
             </div>
-        </div>
-        </div>
-    </div>
+            </div>
+            </div>
   )
 }
 

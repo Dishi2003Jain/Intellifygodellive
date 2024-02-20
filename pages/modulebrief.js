@@ -3,13 +3,17 @@ import Image from 'next/image';
 import styles from "../styles/Home.module.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
+import Heading from '@/components/Heading';
 const modulebrief = () => {
   return (
     <>
       <div className={styles.uicontainer}>
         <div className={styles.modulebriefcontainer}>
+          <Heading/>
+          <div className={styles.modulebriefheading}>
          <h2>Before we get in..</h2>
          <p>Circle,Square,Tools</p>
+         </div>
           <div className={styles.modulebriefshapes}>
             <div className={styles.briefshapes}>
              <Image src='/briefcircle.jpeg' width={75} height={75}/>

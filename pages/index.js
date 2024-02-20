@@ -6,77 +6,105 @@ import { FaArrowRight } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import OtpInput from "@/components/OtpInput";
 import Image from "next/image";
+
 const Index = () => {
   const [isopen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState(""); // State to store entered OTP
+
+  const sendOtpToEmail = async () => { // Modified to remove parameter and use state directly
+    try {
+      const response = await fetch('/api/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      alert(data.message); // Show response message
+    } catch (error) {
+      console.error('Failed to send OTP:', error);
+    }
+  };
+
+  const verifyOtp = async () => { // Modified to remove parameters and use state directly
+    try {
+      const response = await fetch('/api/verify-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, otp }),
+      });
+      const data = await response.json();
+      alert(data.message); // Show response message
+    } catch (error) {
+      console.error('Failed to verify OTP:', error);
+    }
+  };
 
   const handleClick = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
+
   const handleOtpComplete = (otp) => {
     console.log("Entered OTP:", otp);
+    setOtp(otp); // Store entered OTP in state
   };
+
+  // Corrected onClick event handler for the "Send OTP" button
+  const handleSendOtpClick = (e) => {
+    e.preventDefault(); // Prevent form submission or any default action
+    sendOtpToEmail();
+  };
+
+  // Add a new function for the "Confirm OTP" action
+  const handleConfirmOtpClick = (e) => {
+    e.preventDefault(); // Prevent form submission or any default action
+    verifyOtp();
+  };
+
   return (
     <div className={styles.uicontainer}>
       {isopen ? (
         <div className={styles.logincontainer}>
-          <div className={styles.cancelbtn}>
+            <div className={styles.cancelbtn}>
             <MdCancel onClick={handleClick} />
           </div>
-          <div className={styles.loginheading}>
+          
+           <div className={styles.loginheading}>
             <h1>Login</h1>
             <p className={styles.crimsonText}>
               To save the progress.No spam ever
             </p>
           </div>
           <div className={styles.emailinput}>
-            <label htmlFor="email">
-              <h3>Email Address</h3>
-            </label>
-            <input
-              style={{
-                backgroundColor: "#f4f4f4",
-                height: "53.3px",
-                width: "350px",
-              }}
-              type="email"
-              name="email"
-              id=""
-              placeholder="Enter your email Address"
-            />
-          </div>
-
-          <h4
+          <input
             style={{
-              color: "black",
-              fontWeight: 600,
-              fontSize: "18px",
-              lineHeight: "24px",
-              font:"Crimson text"
+              backgroundColor: "#f4f4f4",
+              padding:'1rem',
+              width: "350px",
             }}
-          >
-            Confirm Otp
-          </h4>
-
+            type="email"
+            name="email"
+            placeholder="Enter your email Address"
+            onChange={(e) => setEmail(e.target.value)} // Corrected onChange handler
+          />
+          <button onClick={handleSendOtpClick}>Send Otp</button>
+          </div>
           <OtpInput onComplete={handleOtpComplete} />
           <div className={styles.loginbtn}>
             <button
               className={styles.greenbtn}
-              style={{
-                width: "350px",
-                height: "52.24px",
-                borderRadius: "40px",
-                border: ".05px",
-                gap: "16px",
-                top: "470px",
-                padding: "10px, 24px, 10px, 24px",
-                left: "14px",
-              }}
+              onClick={handleConfirmOtpClick} // Add onClick event for OTP confirmation
+            style={{width:'200px'}}
             >
               Continue
             </button>
           </div>
         </div>
-      ) : (
+      ):(
         // Show this when isopen is false
         <div className={styles.landingpage}>
           <div className={styles.navbar}>
