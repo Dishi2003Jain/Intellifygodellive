@@ -30,7 +30,7 @@ const modulebrief = () => {
             </div>
           </div>
 
-          <div className={styles.leftrightbuttons}>
+          <div className={styles.leftrightbuttons} style={{marginTop:'8rem'}}>
             <button className={styles.leftbutton}> <FaArrowLeft /> </button>
             <button className={styles.rightbutton}>Concepts <FaArrowRight /></button>
           </div>

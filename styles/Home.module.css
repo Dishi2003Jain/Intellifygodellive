@@ -8,10 +8,111 @@
   width: 572px;
   padding: 2rem;
   border: 1px solid rgb(204, 204, 204);
-  background-color: #F5FBF0;
+  background: linear-gradient(180deg, #F5FBF0 0%, rgba(255, 255, 255, 0) 100%);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.topicintrocontainer{
+  width: 572px;
+  padding: 2rem;
+  border: 1px solid rgb(204, 204, 204);
+  background: linear-gradient(180deg, #F5FBF0 0%, rgba(255, 255, 255, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.contentslidecontainer{
+  width: 572px;
+  padding: 2rem;
+  border: 1px solid rgb(204, 204, 204);
+  background: linear-gradient(180deg, #F5FBF0 0%, rgba(255, 255, 255, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.quizslidecontainer{
+  width: 572px;
+  padding: 2rem;
+  border: 1px solid rgb(204, 204, 204);
+  background: linear-gradient(180deg, #F5FBF0 0%, rgba(255, 255, 255, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quizquestion{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quizoption{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.option{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 16px;
+width: 300px;
+background: #ffffff;
+background-blend-mode: color-dodge;
+border: 1px solid rgba(0, 0, 0, 0.15);
+backdrop-filter: blur(40px);
+border-radius: 10px;
+cursor: pointer;
+}
+.conceptlistcontainer{
+  width: 572px;
+  padding: 2rem;
+  border: 1px solid rgb(204, 204, 204);
+  background: linear-gradient(180deg, #F5FBF0 0%, rgba(255, 255, 255, 0) 100%); 
+}
+
+.progressslidecontainer{
+  width: 572px;
+  padding: 2rem;
+  border: 1px solid rgb(204, 204, 204);
+  background: linear-gradient(180deg, #F5FBF0 0%, rgba(255, 255, 255, 0) 100%);
+}
+.progressstatus{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 10rem;
+}
+
+.progressshape{
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  gap: 3rem;
+}
+.contentsld{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.conceptlistcontent{
+  margin: 2rem;
+}
+
+.conceptlist{
+  display: flex;
+  margin: 1rem;
+  gap: 1rem;
 }
 .coursehomepage{
   width: 572px;
@@ -175,7 +276,6 @@
 .leftrightbuttons{
   display: flex;
   justify-content: center;
-  margin-top: 8rem;
 }
 .leftbutton{
 background: rgba(0, 0, 0, 0.42);
@@ -223,4 +323,11 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 .justifytext{
   text-align: justify;
+}
+
+.topicintroheading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }

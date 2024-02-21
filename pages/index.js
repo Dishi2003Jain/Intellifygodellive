@@ -132,7 +132,7 @@ const Index = () => {
             </p>
             <div className={styles.desg}>
               <div>
-                <Image src="/shapes.jpeg" width={185} height={134} />
+                <Image src="/shapes1.png" width={185} height={134} />
               </div>
             </div>
             <p className={styles.justifytext}>
