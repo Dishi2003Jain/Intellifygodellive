@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import styles from "../styles/Home.module.css";
+
 const topicintroduction = () => {
   return (
     <div className={styles.uicontainer}>
