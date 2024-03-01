@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   // Extracting courseId from query parameters
 //   const { courseId } = req.query;
-  const courseId='65d341ae54c8f28204435fe2'
+  const courseId='65ddb3873fe8eb9645ff52ba'
   if (!courseId) {
     return res.status(400).json({ message: 'courseId query parameter is required' });
   }

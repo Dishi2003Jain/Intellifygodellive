@@ -11,9 +11,10 @@ const slideSchema = new mongoose.Schema({
   },
   slide_type: {
     type: String,
-    enum: ['Topic Introduction Slide', 'Content Slide', 'Quiz Slide','Progress Slide'],
+    enum: ['Topic Introduction Slide', 'Content Slide', 'Quiz Slide','Progress Slide','Concept Slide'],
     required: true,
   },
+  concepts: [String],
   bodyType: {
     type: String,
     enum: ['Circle', 'Square', 'Tool'],
@@ -56,6 +57,10 @@ const moduleSchema = new mongoose.Schema({
   module_name: {
     type: String,
     required: true,
+  },
+  details: { 
+    type: String,
+    required: false,
   },
   slug: {
     type: String,

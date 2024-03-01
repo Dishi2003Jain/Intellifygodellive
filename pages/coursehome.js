@@ -7,19 +7,32 @@ import { MdDoneOutline } from "react-icons/md";
 import Image from 'next/image';
 import Link from 'next/link';
 
+const Loader = () => <div className={styles.loader}>Loading...</div>;
+
 const coursehome = () => {
     const completionPercentage = 60;
     const [modules, setModules] = useState([]);
+    const [isLoading, setIsLoading] = useState(true); // Added loading state
 
     useEffect(() => {
-        async function fetchModules() {          
-          const res = await fetch('/api/module');
-          const data = await res.json();
-          setModules(data);
+        async function fetchModules() {
+            try {
+                const res = await fetch('/api/module');
+                const data = await res.json();
+                setModules(data);
+            } catch (error) {
+                console.error("Failed to fetch modules", error);
+            } finally {
+                setIsLoading(false); // Set loading to false once the data is fetched
+            }
         }
-    
+
         fetchModules();
-      }); 
+    },[]);
+
+    if (isLoading) {
+      return <div className={styles.loader}></div>;
+    }
 
   return (
     <div className={styles.uicontainer}>
@@ -51,13 +64,19 @@ const coursehome = () => {
             <CircularProgressBar percentage={completionPercentage}/>
         </div>
         <div className={styles.secondcoursehome}>
-        {modules.map((module, index) => (
-        <div key={index} className={styles.courseitem}>
-           <Link href='/modulebrief'>
-          <p>{module.module_name}</p>
-          </Link> 
+        {modules && Array.isArray(modules) && modules.map((module, index) => (
+    <div key={index} className={styles.courseitem}>
+      <div className={styles.moduleheading}>
+        <h3>{module.module_name}</h3>
+        <div>
+          <Image src='/shape1circle.png' alt='circle' width={25} height={25}/>
+          <Image src='/shape1square.png' alt='square' width={25} height={25}/>
+          <Image src='/shape1tool.png' alt='tool' width={25} height={25}/>
         </div>
-      ))}
+        </div>
+        <p>{module.details}</p>
+    </div>
+  ))}
             </div>
             </div>
             </div>
