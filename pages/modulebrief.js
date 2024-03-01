@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import Heading from '@/components/Heading';
+import Link from 'next/link';
 const modulebrief = () => {
   return (
     <>
@@ -32,7 +33,9 @@ const modulebrief = () => {
 
           <div className={styles.leftrightbuttons} style={{marginTop:'8rem'}}>
             <button className={styles.leftbutton}> <FaArrowLeft /> </button>
+            <Link href='/conceptlist' >
             <button className={styles.rightbutton}>Concepts <FaArrowRight /></button>
+            </Link>
           </div>
           </div>
         </div>   

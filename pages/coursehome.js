@@ -6,13 +6,12 @@ import { FaPlayCircle } from "react-icons/fa";
 import { MdDoneOutline } from "react-icons/md";
 import Image from 'next/image';
 import Link from 'next/link';
-
-const Loader = () => <div className={styles.loader}>Loading...</div>;
-
+import Conceptlist from './conceptlist';
 const coursehome = () => {
     const completionPercentage = 60;
     const [modules, setModules] = useState([]);
-    const [isLoading, setIsLoading] = useState(true); // Added loading state
+    const [isLoading, setIsLoading] = useState(true); 
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
     useEffect(() => {
         async function fetchModules() {
@@ -30,11 +29,34 @@ const coursehome = () => {
         fetchModules();
     },[]);
 
+    const handleNextSlide = () => {
+      const currentModule = modules[currentSlideIndex];
+      const currentSlideType = currentModule.slides[currentSlideIndex].slide_type;
+      const nextSlideIndex = currentModule.slides.findIndex((slide, index) => 
+          index > currentSlideIndex && slide.slide_type === currentSlideType
+      );
+      if (nextSlideIndex !== -1) {
+          setCurrentSlideIndex(nextSlideIndex);
+      }
+  };
+
+  const handlePreviousSlide = () => {
+      const currentModule = modules[currentSlideIndex];
+      const currentSlideType = currentModule.slides[currentSlideIndex].slide_type;
+      const previousSlideIndex = currentModule.slides.slice(0, currentSlideIndex).reverse().findIndex(slide => slide.slide_type === currentSlideType);
+      if (previousSlideIndex !== -1) {
+          setCurrentSlideIndex(currentSlideIndex - previousSlideIndex - 1);
+      }
+  };
+
     if (isLoading) {
       return <div className={styles.loader}></div>;
     }
 
-  return (
+    const currentModule = modules[currentSlideIndex];
+    const currentSlide = currentModule.slides[currentSlideIndex];
+  
+    return (
     <div className={styles.uicontainer}>
         <div className={styles.coursehomepage}>
        <div>
@@ -66,8 +88,28 @@ const coursehome = () => {
         <div className={styles.secondcoursehome}>
         {modules && Array.isArray(modules) && modules.map((module, index) => (
     <div key={index} className={styles.courseitem}>
+      <FaPlayCircle/>
+      <MdDoneOutline/>
       <div className={styles.moduleheading}>
-        <h3>{module.module_name}</h3>
+      {index === 0 ? (
+          <Link href="/modulebrief" style={{textDecoration:'none', color:'black' }}>
+              <h3>{module.module_name}</h3>
+          </Link>
+        ) : (
+          <h3>{module.module_name}</h3>
+        )}
+       {module.slides.map(slide => (
+                  <div key={slide._id}>
+                   {currentSlide.slide_type === 'Content Slide' && (
+                        <Conceptlist
+                            key={currentSlideIndex}
+                            slide={currentSlide}
+                            handleNextSlide={handleNextSlide}
+                            handlePreviousSlide={handlePreviousSlide}
+                        />
+                    )}
+                  </div>
+            ))}
         <div>
           <Image src='/shape1circle.png' alt='circle' width={25} height={25}/>
           <Image src='/shape1square.png' alt='square' width={25} height={25}/>

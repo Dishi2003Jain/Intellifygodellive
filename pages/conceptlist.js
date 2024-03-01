@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import Image from 'next/image';
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
-const conceptlist = () => {
+const Conceptlist = () => {
   return (
     <div className={styles.uicontainer}>
      <div className={styles.conceptlistcontainer}>
@@ -38,4 +38,4 @@ const conceptlist = () => {
   )
 }
 
-export default conceptlist
+export default Conceptlist
