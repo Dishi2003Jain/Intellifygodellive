@@ -1,7 +1,7 @@
 import React from 'react'
 import Heading from '@/components/Heading'
 import styles from "../styles/Home.module.css";
-const quizslide = () => {
+const Quizslide = () => {
   return (
     <div className={styles.uicontainer}>
         <div className={styles.quizslidecontainer}>
@@ -21,4 +21,4 @@ const quizslide = () => {
   )
 }
 
-export default quizslide
+export default Quizslide

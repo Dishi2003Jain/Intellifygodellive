@@ -5,7 +5,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import styles from "../styles/Home.module.css";
 
-const topicintroduction = () => {
+const Topicintroduction = () => {
   return (
     <div className={styles.uicontainer}>
      <div className={styles.topicintrocontainer}>
@@ -28,4 +28,4 @@ const topicintroduction = () => {
   )
 }
 
-export default topicintroduction
+export default Topicintroduction

@@ -1,10 +1,13 @@
-import React from 'react'
+import React , {useContext} from 'react'
 import Heading from '@/components/Heading'
 import styles from "../styles/Home.module.css";
 import Image from 'next/image';
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
+import { useRouter } from 'next/router';
+
 const Conceptlist = () => {
+
   return (
     <div className={styles.uicontainer}>
      <div className={styles.conceptlistcontainer}>
@@ -31,7 +34,7 @@ const Conceptlist = () => {
         </div>
         <div className={styles.leftrightbuttons} style={{marginTop:'25rem'}}>
             <button className={styles.leftbutton}> <FaArrowLeft /> </button>
-            <button className={styles.rightbutton}>Functions of Money <FaArrowRight /></button>
+            <button  className={styles.rightbutton}>Functions of Money <FaArrowRight /></button>
         </div>
      </div>
     </div>

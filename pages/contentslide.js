@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import Image from 'next/image';
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
-const contentslide = () => {
+const Contentslide = () => {
   return (
     <div className={styles.uicontainer}>
         <div className={styles.contentslidecontainer}>
@@ -26,4 +26,4 @@ const contentslide = () => {
   )
 }
 
-export default contentslide
+export default Contentslide

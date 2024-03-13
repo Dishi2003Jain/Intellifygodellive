@@ -4,7 +4,7 @@ import Heading from '@/components/Heading';
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import Image from 'next/image';
-const progressslide = () => {
+const Progressslide = () => {
   return (
     <div className={styles.uicontainer}>
         <div className={styles.progressslidecontainer}>
@@ -28,4 +28,4 @@ const progressslide = () => {
   )
 }
 
-export default progressslide
+export default Progressslide
