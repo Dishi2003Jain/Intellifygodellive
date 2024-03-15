@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 .uicontainer{
   display: flex;
   justify-content: center;
@@ -431,9 +433,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 .modalContent {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  width: 30%;
+  padding: 30px;
+  border-radius: 1.7rem;
+  width: 40%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -443,15 +445,24 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 .formGroup label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0.75rem;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .formGroup input {
   width: 95%;
-  padding: 8px;
+  padding: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.formGroup input::placeholder {
+  font-size: 16px; /* Adjust the size as needed */
+  color: #888; /* Optional: if you want to change the color of the placeholder text */
+}
+
 
 .submitBtn{
   padding: 10px 20px;
@@ -460,29 +471,48 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
+  font-size: 1.2rem;
 }
 
-.submitBtn:hover, .closeBtn:hover {
+.submitBtn:hover{
   background-color:rgb(42, 114, 30);
 }
 
+.switchModal{
+  font-size: 1.2rem;
+  margin: 1rem;
+}
 
 .switchModal a {
   color: rgb(42, 114, 30);
   text-decoration: underline;
+  font-weight: 700;
 }
 
-.registerheading{
+.registerheading {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* This will be overridden by the spacer approach but is good as a fallback */
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  font-family: 'Roboto', sans-serif;
+  position: relative; /* Ensures absolute positioning is relative to this container */
 }
 
-.modalCloseIcon{
+.registerheadingText {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.modalCloseIcon {
+  position: absolute;
+  left: 97%; /* Aligns the icon to the left */
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 1.5rem;
   cursor: pointer;
 }
+
 
 .subbutton{
   display: flex;

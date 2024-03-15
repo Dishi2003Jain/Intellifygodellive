@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     try {
-      const { email, password, name } = req.body;
+      const { email, password } = req.body;
 
       // Check if the learner already exists
       const learnerExists = await Learner.findOne({ email });
@@ -19,7 +19,6 @@ export default async function handler(req, res) {
 
       // Create new learner
       const newLearner = new Learner({
-        name,
         email,
         password: hashedPassword,
       });

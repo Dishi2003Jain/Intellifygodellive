@@ -27,7 +27,6 @@ const Index = () => {
     const formData = {
       email,
       password,
-      ...(formType === 'register' && { name }), // Include name only for registration
     };
   
     try {
@@ -51,10 +50,7 @@ const Index = () => {
       console.error('Error:', error);
       alert('An unexpected error occurred');
     }
-     
-  
-    // Clear the form fields
-    setName('');
+
     setEmail('');
     setPassword('');
   };
@@ -117,23 +113,17 @@ const Index = () => {
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
             <div className={styles.registerheading}>
-              <h2>{modalState.isLogin ? "Login" : "Register"}</h2>
+              <h1 className={styles.registerheadingText}>{modalState.isLogin ? "Login to Proceed" : "Create your account"}</h1>
               <MdCancel className={styles.modalCloseIcon} onClick={closeModal} />
             </div>
             <form onSubmit={handleFormSubmit}>
-              {!modalState.isLogin && (
-                <div className={styles.formGroup}>
-                  <label htmlFor="name">Name</label>
-                  <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} required />
-                </div>
-              )}
               <div className={styles.formGroup}>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}  required />
+                <input type="email" id="email" name="email" placeholder="Enter your email address" value={email} onChange={(e) => setEmail(e.target.value)}  required />
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input type="password" id="password" name="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               </div>
               <div className={styles.subbutton}>
                 <button type="submit" className={styles.submitBtn}>{modalState.isLogin ? 'Login' : 'Register'}</button>
