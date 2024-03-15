@@ -112,7 +112,7 @@ const ModuleSlides = () => {
            <Heading/>
            <div className={styles.progressstatus}>
             <Image src='/progresscircle.png' width={100} height={100}/>
-            <p>Congratulations! You earned a circle.</p>
+            <p>Congratulations! You earned a {slide.bodyType}</p>
            </div>
            <div className={styles.progressshape}>
             <Image src='/progresscircle.png' width={50} height={50}/>
